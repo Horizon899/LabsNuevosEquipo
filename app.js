@@ -22,7 +22,7 @@ const port = 3000;
 //Crea el server (claramente) conocido como callback
 const server = http.createServer((req, res) => {
     //Ruta al HTML
-    const rutahtml = path.join(__dirname, "Lab 01.html");
+    const rutahtml = path.join(__dirname, "main_page.html");
     //Leer HTML
     console.log(request.url);
     response.setHeader('Content-Type', 'text/html');

@@ -24,8 +24,8 @@ const server = http.createServer((req, res) => {
     //Ruta al HTML
     const rutahtml = path.join(__dirname, "main_page.html");
     //Leer HTML
-    console.log(request.url);
-    response.setHeader('Content-Type', 'text/html');
+    console.log(req.url);
+    res.setHeader('Content-Type', 'text/html');
 
     const html_header = `
         <!DOCTYPE html>
@@ -57,12 +57,10 @@ const server = http.createServer((req, res) => {
                 </div>
             </nav>
             </div>
-        </body>
-        </html>
     `;
 
-    if (request.url == "/login") {
-        response.write(`
+    if (req.url == "/login" && req.method == "GET") {
+        res.write(`
         <!DOCTYPE html>
         <html class="has-background-dark">
         <head>
@@ -102,9 +100,82 @@ const server = http.createServer((req, res) => {
             <script src="validarcontra.js"></script>
         </body>
         `
-        )
+        );
+        res.end();;
     }
-});
+
+    else if (req.url == "/infstrat" && req.method == "GET") {
+        res.write(`
+        ${html_header}
+        <div class="box column">
+            <figure class="image is-128x128">
+                <img src="https://media.sweetwater.com/m/products/image/9311ad5adcD1xJJg9QhKSEhEublqaLTXLtT1ePWN.png?quality=82&height=750&ha=9311ad5adc9663f2" alt="Fender Stratocaster Amarilla">
+            </figure>
+            <p class="has-text-centered is-size-3">Fender Stratocaster Amarilla: 
+                <ul>
+                    <li>Basswood Body</li>
+                    <li>6-Saddle Vintage-Style Synchronized Tremolo Bridge</li>
+                    <li>intage-Style Single-Coil Strat Pickups</li>
+                    <li>Fender Vintage "F" Stamped Tuners</li>
+                    <li>3-Bolt Neck Plate with Micro-Tilt</li>
+                    <li>9.5" Radius Maple or Rosewood with Medium Jumbo Frets</li>
+                </ul>
+            </p>
+        </div>
+        </body>
+        </html>
+        `)
+    }
+
+    else if (req.url == "/" && req.method == "GET") {
+        res.write(`
+        <h1 class="title is-size-1">Guitarras</h1>
+
+        <div class="box column button has-background-black-ter">
+            <figure class="image is-96x96">
+                <img src="https://media.sweetwater.com/m/products/image/9311ad5adcD1xJJg9QhKSEhEublqaLTXLtT1ePWN.png?quality=82&height=750&ha=9311ad5adc9663f2" alt="Fender stratocaster">
+            </figure>
+            <p class="has-text-centered is-size-3">Fender Stratocaster Amarilla</p>  
+        </div>
+    
+        <div class="box column button has-background-black-ter">
+            <figure class="image is-64x64">
+                <img  class="image-fit" src="https://camposmusicusa.com/cdn/shop/files/GD38CE-Takamine.png?v=1702573931" alt="Docerola">
+            </figure>
+            <p class="has-text-centered is-size-3">Takamine 12 cuerdas</p>  
+        </div>
+        <div class="box column button has-background-black-ter">
+            <figure class="image is-96x96">
+                <img  class="image-fit" src="https://images.ctfassets.net/m8onsx4mm13s/QTBJgyljrfxbfN2a91qtR/2282a6d6b00f983b8d78326ca6ed8acb/SGSP00EBCH1_front.png" alt="Gibson SG Ebony">
+            </figure>
+            <p class="has-text-centered is-size-3">Gibson SG Ebony</p>  
+        </div>
+        </body>
+        </html>
+
+        `
+        );
+        res.end();
+    }
+
+    else {
+        res.statusCode = 404;
+
+        res.write(`
+        ${html_header}
+        <header>
+        <h1 class="title">404 No hay chilaquiles</h1>
+        </header>
+        <br>
+        <p class="block">
+            Lo sentimos, pagina no encontrada
+        </p>
+        `);
+        res.end()
+    }
+
+}
+);
 
 
 //hace que escuche el puerto y empieza a funcionar para imprimir el msj

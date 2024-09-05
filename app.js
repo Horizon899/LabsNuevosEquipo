@@ -25,6 +25,7 @@ const server = http.createServer((req, res) => {
     //Leer HTML
     fs.readFile(rutahtml, (err, data) => {
         if (err) {
+            console.error("El error es: ", err);
             res.statusCode = 500;
             res.setHeader("Content-Type", "text/plain");
             // Envia esta respuesta y termina la conexion

@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const path= require("path")
 const port = 3000;
+//Para el EJS
+app.set("view engine","ejs")
+app.set('views', 'views');
 
 //Rutas
 const routes = require("./routes/main_page.routes");
@@ -14,7 +17,7 @@ app.use((req,res)=>{
 })
 
 // archivos estaticos
-app.use(express.static(path.join(__dirname,"../public")))
+app.use(express.static(path.join(__dirname,"public")))
 
 // Inicia el servidor
 app.listen(port, () => {

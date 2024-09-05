@@ -1,7 +1,8 @@
+const path = require("path");
 const controller = {}
 
 controller.main_page = (req, res)=>{
-    res.send("La conexión es correcta")
+    res.render('main_page')
 }
 
 module.exports=controller

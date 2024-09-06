@@ -1,8 +1,8 @@
 const path = require("path");
 const controller = {}
 
-controller.main_page = (req, res) => {
-    res.render('main_page')
+controller.takamine = (req, res) => {
+    res.render('takamine')
 }
 
 module.exports = controller

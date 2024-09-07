@@ -13,5 +13,12 @@ controller.gibson = (req, res) => {
     res.render('gibson')
 }
 
+controller.login = (req, res) => {
+    res.render('login')
+}
+
+controller.takamine = (req, res) => {
+    res.render('takamine')
+}
 
 module.exports = controller

@@ -5,6 +5,10 @@ router.get("/", controller.main_page)
 
 router.get("/strat_amarilla", controller.strat_amarilla);
 
+router.get("/gibson", controller.gibson);
 
+router.get("/login", controller.login);
+
+router.get("/takamine", controller.takamine);
 
 module.exports = router

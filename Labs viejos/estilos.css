@@ -1,0 +1,21 @@
+body{
+    margin: 0 auto;
+    max-width: 50cm;
+    font-family: "Helvetica", "Arial", sans-serif;
+    line-height: 1.5;
+    padding: 4em 1em;
+}
+
+h2 {
+    margin-top: 1em;
+    padding-top: 1em;
+  }
+
+.verde{
+    color: rgb(22, 231, 33);
+}
+
+#titulo{
+    color: coral;
+}
+
